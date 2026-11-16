@@ -3,284 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thulugu Dileep | DevOps Engineer Portfolio</title>
+    <title>Thulugu Dileep | Cloud & DevOps Engineer Portfolio</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #020617;
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#070B14',
+                        }
+                    }
+                }
+            }
         }
-
-        .mono {
-            font-family: 'Fira Code', monospace;
-        }
-
-        .glass {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-        }
-
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: #2563eb;
-            box-shadow: 0 10px 30px -15px rgba(37, 99, 235, 0.3);
-        }
-    </style>
+    </script>
 </head>
-<body class="text-slate-200 antialiased overflow-x-hidden">
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="bg-blue-600 p-2 rounded-lg group-hover:rotate-12 transition-transform">
-                    <i class="fas fa-terminal text-white"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tighter text-white">DILEEP<span class="text-blue-500">.</span>DEV</span>
-            </a>
+    <!-- Background Ambient Glow -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-blue-600/10 blur-[120px]"></div>
+    </div>
 
-            <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#about" class="text-sm font-medium hover:text-blue-400 transition-colors uppercase tracking-widest">About</a>
-                <a href="#skills" class="text-sm font-medium hover:text-blue-400 transition-colors uppercase tracking-widest">Skills</a>
-                <a href="#experience" class="text-sm font-medium hover:text-blue-400 transition-colors uppercase tracking-widest">Experience</a>
-                <a href="#education" class="text-sm font-medium hover:text-blue-400 transition-colors uppercase tracking-widest">Education</a>
-                <a href="mailto:yourmail@example.com" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg shadow-blue-900/20">Contact</a>
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand -->
+                <a href="#home" class="flex items-center space-x-2.5 group">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-slate-950 font-mono font-bold text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                        &gt;_
+                    </div>
+                    <span class="font-mono font-bold text-lg tracking-tight text-white">
+                        dileep<span class="text-cyan-400">.devops</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#about" class="hover:text-cyan-400 transition-colors">Profile</a>
+                    <a href="#skills" class="hover:text-cyan-400 transition-colors">Tech Stack</a>
+                    <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                    <a href="#architecture" class="hover:text-cyan-400 transition-colors">CI/CD Workflow</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-md shadow-cyan-500/20">
+                        Hire Me
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/70 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
-
-            <!-- Mobile Toggle -->
-            <button id="menu-btn" class="md:hidden text-2xl text-slate-400 focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-900 border-b border-slate-800 p-6 flex-col gap-4 text-center animate-in fade-in slide-in-from-top-4">
-            <a href="#about" class="py-2 hover:text-blue-400">About</a>
-            <a href="#skills" class="py-2 hover:text-blue-400">Skills</a>
-            <a href="#experience" class="py-2 hover:text-blue-400">Experience</a>
-            <a href="#education" class="py-2 hover:text-blue-400">Education</a>
-            <a href="mailto:yourmail@example.com" class="py-3 bg-blue-600 rounded-lg text-white font-bold">Contact Me</a>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-5 space-y-2">
+            <a href="#about" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Profile</a>
+            <a href="#skills" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Tech Stack</a>
+            <a href="#projects" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Projects</a>
+            <a href="#architecture" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-cyan-400">CI/CD Workflow</a>
+            <a href="#contact" class="block px-3 py-2.5 rounded-lg text-base font-semibold bg-cyan-500 text-slate-950 text-center mt-2">Hire Me</a>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden hero-gradient">
-        <div class="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-10 left-[-10%] w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[100px]"></div>
-
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
-                    <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-ping"></span>
-                    Available for Work
+    <section id="home" class="pt-14 pb-20 lg:pt-24 lg:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Thulugu Dileep • Aspiring DevOps &amp; Cloud Engineer (Hyderabad)</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-                    Empowering <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Infrastructure</span> <br>with DevOps
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">Thulugu Dileep</span> — Automating Cloud &amp; DevOps Delivery
                 </h1>
-                <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-lg leading-relaxed">
-                    Hi, I'm <span class="text-white font-semibold">Thulugu Dileep</span>. An Associate DevOps Engineer focused on Linux, Azure, and creating seamless automation workflows.
+
+                <p class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                    Aspiring <strong class="text-slate-200 font-semibold">DevOps &amp; Cloud Engineer (Fresher)</strong> with a B.Tech in Aeronautical Engineering and hands-on experience building <strong class="text-slate-200">WorkforceAI</strong>, CI/CD pipelines with Jenkins &amp; GitHub Actions, Docker containers, Kubernetes clusters, and AWS/Azure infrastructure via Terraform &amp; Ansible.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#experience" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-xl shadow-blue-900/40 transform hover:-translate-y-1">
-                        View Journey
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-cyan-500/25 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <span>Explore DevOps Projects</span>
                     </a>
-                    <a href="mailto:yourmail@example.com" class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-slate-800 transition-all border border-slate-700">
-                        Say Hello
+                    <a href="#skills" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-sm sm:text-base transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-cyan-400"></i>
+                        <span>View 20+ Core Skills</span>
                     </a>
                 </div>
-                <div class="mt-12 flex items-center gap-6 text-slate-500">
-                    <a href="#" class="hover:text-blue-400 transition-colors text-2xl"><i class="fab fa-github"></i></a>
-                    <a href="#" class="hover:text-blue-400 transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="hover:text-blue-400 transition-colors text-2xl"><i class="fas fa-envelope"></i></a>
+
+                <!-- Quick Recruiter Highlights -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 max-w-xl">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-white font-mono">20+</p>
+                        <p class="text-xs sm:text-sm text-slate-400">DevOps &amp; Cloud Tools</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-cyan-400 font-mono">100%</p>
+                        <p class="text-xs sm:text-sm text-slate-400">Hands-on Lab Deployments</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-emerald-400 font-mono">24/7</p>
+                        <p class="text-xs sm:text-sm text-slate-400">Prometheus &amp; Grafana Ready</p>
+                    </div>
                 </div>
             </div>
-            <div class="hidden md:block">
-                <div class="relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25"></div>
-                    <div class="relative glass rounded-2xl p-6 mono text-sm shadow-2xl">
-                        <div class="flex gap-2 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+
+            <!-- Right Interactive Terminal Card -->
+            <div class="lg:col-span-5">
+                <div class="rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl overflow-hidden">
+                    <!-- Window Header -->
+                    <div class="flex items-center justify-between px-4 py-3 bg-slate-950/90 border-b border-slate-800">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
                         </div>
-                        <p class="text-blue-400 mb-2 font-bold">// Infrastructure as Code</p>
-                        <p class="text-slate-300 mb-1"><span class="text-purple-400">const</span> engineer = {</p>
-                        <p class="text-slate-300 ml-4">name: <span class="text-green-400">'Thulugu Dileep'</span>,</p>
-                        <p class="text-slate-300 ml-4">role: <span class="text-green-400">'Associate DevOps Engineer'</span>,</p>
-                        <p class="text-slate-300 ml-4">stack: [<span class="text-green-400">'Linux'</span>, <span class="text-green-400">'Azure'</span>, <span class="text-green-400">'Bash'</span>],</p>
-                        <p class="text-slate-300 ml-4">location: <span class="text-green-400">'Telangana, India'</span>,</p>
-                        <p class="text-slate-300 ml-4">passion: <span class="text-green-400">'Continuous Automation'</span></p>
-                        <p class="text-slate-300">};</p>
-                        <p class="text-slate-300 mt-4"><span class="text-purple-400">while</span> (engineer.learning) {</p>
-                        <p class="text-slate-300 ml-4">engineer.skills.push(<span class="text-green-400">'New Technologies'</span>);</p>
-                        <p class="text-slate-300">}</p>
+                        <span class="text-xs font-mono text-slate-400">dileep@k8s-prod-cluster:~</span>
+                        <button onclick="replayTerminal()" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 px-2 py-1 rounded bg-slate-800/80">
+                            <i class="fa-solid fa-rotate-right mr-1"></i>Run
+                        </button>
+                    </div>
+                    <!-- Terminal Body -->
+                    <div id="terminal-output" class="p-5 font-mono text-xs sm:text-sm space-y-2.5 min-h-[310px] text-slate-300 leading-relaxed">
+                        <div class="text-slate-500"># Checking candidate profile &amp; cluster readiness...</div>
+                        <div><span class="text-emerald-400">$</span> <span class="text-white">whoami --role</span></div>
+                        <div class="text-cyan-300 pl-3">Thulugu Dileep | Aspiring DevOps &amp; Cloud Engineer (Fresher)</div>
+                        <div><span class="text-emerald-400">$</span> <span class="text-white">terraform validate &amp;&amp; kubectl get nodes</span></div>
+                        <div class="text-emerald-400 pl-3">Success! The configuration is valid.</div>
+                        <div class="text-slate-300 pl-3">aks-nodepool-01 &nbsp; Ready &nbsp; control-plane &nbsp; v1.30</div>
+                        <div class="text-slate-300 pl-3">eks-worker-02 &nbsp;&nbsp;&nbsp; Ready &nbsp; worker &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v1.30</div>
+                        <div><span class="text-emerald-400">$</span> <span class="text-white">curl -s localhost:9090/-/healthy</span></div>
+                        <div class="text-emerald-400 pl-3">Prometheus &amp; Grafana Stack: Healthy (200 OK)</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1">
-                    <h2 class="text-3xl font-bold text-white mb-6">About Me</h2>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-6">
-                        Motivated and detail-oriented Associate DevOps Engineer with extensive knowledge in <span class="text-blue-400">Linux Administration</span>, <span class="text-blue-400">Bash Scripting</span>, and <span class="text-blue-400">Cloud Environments</span>. 
+    <!-- Candidate Summary, Education & Fresher Readiness Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6 sm:p-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="inline-flex items-center space-x-2 text-cyan-400 font-mono text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-user-check"></i>
+                        <span>Candidate Overview &amp; Education</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Entry-Level DevOps Engineer Built for Production Standards</h2>
+                    <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                        As a dedicated <strong class="text-white">DevOps Fresher</strong> based in <strong class="text-slate-200">Hyderabad, Telangana</strong>, I focus on bridging software development and cloud operations through Infrastructure as Code (IaC), automated testing/deployment pipelines, and container orchestration. Through developing <strong class="text-cyan-300">WorkforceAI</strong> and building cloud labs on <strong class="text-slate-200">AWS</strong> and <strong class="text-slate-200">Microsoft Azure</strong>, I have gained practical exposure to backend integration, <strong class="text-slate-200">AWS IAM</strong> security, Docker containerization, Kubernetes deployments, and observability with <strong class="text-slate-200">Prometheus &amp; Grafana</strong>.
                     </p>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                        I am currently at VolksKatt Infotech Pvt Ltd, where I bridge the gap between development and operations. My background in Aeronautical Engineering gives me a unique perspective on system reliability and structural optimization in the cloud.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="p-4 glass rounded-xl">
-                            <h4 class="text-blue-400 font-bold text-xl mb-1">Analytical</h4>
-                            <p class="text-xs text-slate-500 uppercase tracking-tighter">Mindset</p>
+
+                    <!-- Education Highlight -->
+                    <div class="pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
+                            <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs mb-1">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>2021 – 2025 • B.Tech</span>
+                            </div>
+                            <p class="font-semibold text-white text-sm">Aeronautical Engineering</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Institute of Aeronautical Engineering, Hyderabad</p>
                         </div>
-                        <div class="p-4 glass rounded-xl">
-                            <h4 class="text-blue-400 font-bold text-xl mb-1">Resilient</h4>
-                            <p class="text-xs text-slate-500 uppercase tracking-tighter">Troubleshooting</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2 grid grid-cols-2 gap-4">
-                    <div class="h-64 bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 relative group">
-                        <div class="absolute inset-0 bg-blue-600/20 group-hover:bg-transparent transition-all"></div>
-                        <div class="flex items-center justify-center h-full text-blue-500 opacity-20 group-hover:opacity-100 transition-opacity">
-                            <i class="fas fa-server text-6xl"></i>
-                        </div>
-                    </div>
-                    <div class="h-64 bg-slate-800 rounded-3xl mt-8 overflow-hidden border border-slate-700 relative group">
-                        <div class="absolute inset-0 bg-indigo-600/20 group-hover:bg-transparent transition-all"></div>
-                        <div class="flex items-center justify-center h-full text-indigo-500 opacity-20 group-hover:opacity-100 transition-opacity">
-                            <i class="fas fa-cloud text-6xl"></i>
+                        <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
+                            <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs mb-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Contact &amp; Location</span>
+                            </div>
+                            <p class="font-semibold text-white text-sm">Hyderabad, Telangana</p>
+                            <p class="text-xs text-slate-400 mt-0.5">+91 7288056396 • thulugudileep@gmail.com</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Technical Skills</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Skill Card -->
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fab fa-linux"></i>
+                <!-- Career Status Card (Fresher) -->
+                <div class="rounded-xl bg-slate-950/90 border border-slate-800 p-5 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Experience Level</span>
+                        <span class="px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                            Fresher / Entry-Level
+                        </span>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Linux Admin</h3>
-                    <p class="text-xs text-slate-500">System maintenance, security, and administration.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-green-600/20 text-green-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fas fa-terminal"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Bash Scripting</h3>
-                    <p class="text-xs text-slate-500">Automation of routine tasks and workflows.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fab fa-microsoft"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Azure DevOps</h3>
-                    <p class="text-xs text-slate-500">Cloud infrastructure and pipeline management.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-purple-600/20 text-purple-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Networking</h3>
-                    <p class="text-xs text-slate-500">DNS, IP Addressing, Routers & Firewalls.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-slate-600/20 text-slate-400 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Git & GitHub</h3>
-                    <p class="text-xs text-slate-500">Version control and collaborative coding.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-indigo-600/20 text-indigo-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Multi-Cloud</h3>
-                    <p class="text-xs text-slate-500">Working across different cloud platforms.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-red-600/20 text-red-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Troubleshooting</h3>
-                    <p class="text-xs text-slate-500">Fast resolution of infrastructure issues.</p>
-                </div>
-
-                <div class="skill-card p-6 glass rounded-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-cyan-600/20 text-cyan-500 rounded-lg flex items-center justify-center mb-4 text-xl">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-2">Infra Basics</h3>
-                    <p class="text-xs text-slate-500">Core hardware and software infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 px-6 bg-slate-900/30">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-4">
-                <span class="p-3 bg-blue-600/10 text-blue-500 rounded-xl"><i class="fas fa-briefcase"></i></span>
-                Experience
-            </h2>
-
-            <div class="relative pl-8 border-l border-slate-800 space-y-12">
-                <!-- Timeline Dot -->
-                <div class="absolute -left-2 top-0 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
-                
-                <div>
-                    <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center mb-4">
-                        <h3 class="text-xl font-bold text-white">Associate DevOps Engineer</h3>
-                        <span class="px-4 py-1 glass rounded-full text-xs font-bold text-blue-400 mt-2 md:mt-0">Present</span>
-                    </div>
-                    <p class="text-blue-500 font-medium mb-4">VolksKatt Infotech Pvt Ltd</p>
-                    <ul class="space-y-4 text-slate-400 leading-relaxed">
-                        <li class="flex gap-3">
-                            <i class="fas fa-chevron-right text-blue-600 mt-1.5 text-xs"></i>
-                            <span>Working on Linux administration, Bash scripting, and DevOps concepts.</span>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>Role Target:</strong> Junior DevOps Engineer, Associate DevOps Engineer, Cloud Engineer</span>
                         </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-chevron-right text-blue-600 mt-1.5 text-xs"></i>
-                            <span>Learning Azure Cloud and Multi-Cloud infrastructure management.</span>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>Availability:</strong> Immediate Joiner (Full-Time / Relocatable)</span>
                         </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-chevron-right text-blue-600 mt-1.5 text-xs"></i>
-                            <span>Practicing networking concepts such as DNS, IP addressing, routers, and firewalls.</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-chevron-right text-blue-600 mt-1.5 text-xs"></i>
-                            <span>Supporting automation and infrastructure-related tasks.</span>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>Core Strength:</strong> End-to-End CI/CD, Docker, K8s, WorkforceAI &amp; Multi-Cloud IaC</span>
                         </li>
                     </ul>
                 </div>
@@ -288,122 +222,610 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-4">
-                <span class="p-3 bg-indigo-600/10 text-indigo-500 rounded-xl"><i class="fas fa-graduation-cap"></i></span>
-                Education
-            </h2>
+    <!-- Comprehensive DevOps Skills Matrix -->
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+                <span class="text-cyan-400 font-mono text-xs uppercase tracking-wider">Technical Arsenal</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">DevOps &amp; Cloud Skills Matrix</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base max-w-2xl">
+                    Every core tool, orchestration platform, CI/CD engine, and observability stack required for modern cloud delivery.
+                </p>
+            </div>
 
-            <div class="grid gap-6">
-                <div class="p-6 glass rounded-2xl hover:border-indigo-500/50 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-lg font-bold text-white">B.Tech in Aeronautical Engineering</h3>
-                            <p class="text-slate-400">Institute of Aeronautical Engineering</p>
-                        </div>
-                        <span class="text-xs font-bold text-indigo-400 uppercase">2021 - 2025</span>
+            <!-- Interactive Category Filter -->
+            <div class="flex flex-wrap gap-2" id="skill-filters">
+                <button data-filter="all" class="filter-btn active px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500 text-slate-950 transition-all">
+                    All Skills
+                </button>
+                <button data-filter="cicd" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    CI/CD &amp; Build
+                </button>
+                <button data-filter="containers" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    Docker &amp; K8s
+                </button>
+                <button data-filter="cloud" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    AWS &amp; Azure
+                </button>
+                <button data-filter="iac-obs" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-500/50 transition-all">
+                    IaC &amp; Monitoring
+                </button>
+            </div>
+        </div>
+
+        <!-- Categorized Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skills-grid">
+
+            <!-- Category 1: DevOps & CI/CD Pipelines -->
+            <div data-category="cicd" class="skill-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 p-6 transition-all">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                        <i class="fa-solid fa-code-branch text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">DevOps, CI/CD &amp; Source Control</h3>
+                        <p class="text-xs text-slate-400">Automated build, test, artifact packaging &amp; release pipelines</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-cyan-300">DevOps</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-cyan-300">DevOps CI/CD</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">DevOps Jenkins</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Jenkins (Declarative Pipelines)</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">GitLab CI/CD</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">GitHub Actions</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Azure DevOps</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Maven</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Git</span>
+                </div>
+            </div>
+
+            <!-- Category 2: Containerization & Kubernetes Orchestration -->
+            <div data-category="containers" class="skill-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-blue-500/40 p-6 transition-all">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                        <i class="fa-brands fa-docker text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Containers &amp; Kubernetes Orchestration</h3>
+                        <p class="text-xs text-slate-400">Multi-stage containerization, cluster administration &amp; zero-downtime rollouts</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-blue-300">Docker</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-blue-300">Docker Container</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Kubernetes</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Kubernetes Cluster</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Kubernetes Deployment</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Azure Kubernetes (AKS)</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Helm &amp; Ingress</span>
+                </div>
+            </div>
+
+            <!-- Category 3: Cloud Platforms & Security -->
+            <div data-category="cloud" class="skill-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-amber-500/40 p-6 transition-all">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                        <i class="fa-brands fa-aws text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Multi-Cloud Architecture &amp; IAM</h3>
+                        <p class="text-xs text-slate-400">Cloud compute, networking, identity governance &amp; managed cloud services</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-amber-300">AWS (EC2, VPC, S3, EKS, ECR)</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-amber-300">AWS IAM</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-sky-300">Azure DevOps</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-sky-300">Azure Kubernetes (AKS)</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Linux Administration</span>
+                </div>
+            </div>
+
+            <!-- Category 4: Infrastructure as Code & Observability -->
+            <div data-category="iac-obs" class="skill-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/40 p-6 transition-all">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-chart-line text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">IaC, Configuration &amp; Observability</h3>
+                        <p class="text-xs text-slate-400">Declarative cloud provisioning, server automation &amp; real-time telemetry</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-purple-300">Terraform</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-rose-300">Ansible</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-orange-300">Prometheus</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-emerald-300">Grafana</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950 border border-slate-800 text-slate-200">Grafana &amp; Prometheus Dashboards</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Featured DevOps Projects Section -->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="mb-10">
+            <span class="text-cyan-400 font-mono text-xs uppercase tracking-wider">Hands-On Implementations</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Production-Grade DevOps Projects</h2>
+            <p class="text-slate-400 mt-2 text-sm sm:text-base max-w-2xl">
+                End-to-end architecture projects built to solve real deployment, scaling, and monitoring bottlenecks.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Project 1: WorkforceAI (From Resume) -->
+            <article class="rounded-2xl bg-slate-900/80 border border-cyan-500/40 hover:border-cyan-400 p-6 sm:p-8 flex flex-col justify-between transition-all group shadow-lg shadow-cyan-500/5">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                            Featured Full-Stack &amp; DevOps Project
+                        </span>
+                        <span class="text-xs font-mono text-slate-400">React • Python • Docker • K8s</span>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                        WorkforceAI – Workforce Management Platform
+                    </h3>
+                    <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                        Designed and developed a centralized workforce management platform supporting employee operations, attendance tracking, shift scheduling, and leave approval workflows with role-based access control (RBAC) for administrators and employees.
+                    </p>
+
+                    <div class="mt-5 space-y-2 text-xs sm:text-sm text-slate-300 bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
+                        <p><strong class="text-cyan-400">Backend &amp; Data:</strong> Built REST APIs in <strong class="text-white">Python</strong> integrated with <strong class="text-white">PostgreSQL</strong> and a responsive <strong class="text-white">React</strong> frontend.</p>
+                        <p><strong class="text-emerald-400">DevOps Workflow:</strong> Managed source control with <strong class="text-white">Git &amp; GitHub</strong>, containerized services via <strong class="text-white">Docker</strong>, and prepared automated deployment pipelines using <strong class="text-white">Jenkins, Azure &amp; Kubernetes</strong>.</p>
                     </div>
                 </div>
 
-                <div class="p-6 glass rounded-2xl hover:border-indigo-500/50 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-lg font-bold text-white">Intermediate</h3>
-                            <p class="text-slate-400">Narayana Junior College</p>
-                        </div>
-                        <span class="text-xs font-bold text-indigo-400 uppercase">2020 - 2021</span>
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">React</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Python</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">PostgreSQL</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Docker</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Jenkins</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Kubernetes</span>
+                    </div>
+                    <button onclick="openProjectModal('proj1')" class="text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5">
+                        <span>Inspect Architecture</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 p-6 sm:p-8 flex flex-col justify-between transition-all group">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/15 text-blue-300 border border-blue-500/30">
+                            Multi-Cloud IaC &amp; AKS
+                        </span>
+                        <span class="text-xs font-mono text-slate-400">Terraform • Ansible • Azure</span>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                        Infrastructure as Code Provisioning &amp; Azure Kubernetes (AKS) Pipeline
+                    </h3>
+                    <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                        Provisioned reproducible cloud infrastructure using modular <strong class="text-slate-200">Terraform</strong> scripts and automated OS hardening &amp; runtime configuration via <strong class="text-slate-200">Ansible</strong> playbooks. Integrated <strong class="text-slate-200">Azure DevOps</strong> and <strong class="text-slate-200">GitHub Actions</strong> to deploy containerized apps into <strong class="text-slate-200">Azure Kubernetes (AKS)</strong>.
+                    </p>
+
+                    <div class="mt-5 space-y-2 text-xs sm:text-sm text-slate-300 bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
+                        <p><strong class="text-blue-400">Key Impact:</strong> Reduced environment spin-up time from hours to under 8 minutes with remote Terraform state locking.</p>
+                        <p><strong class="text-emerald-400">Automation:</strong> Idempotent Ansible roles configured Nginx reverse proxies and Docker engines across nodes.</p>
                     </div>
                 </div>
 
-                <div class="p-6 glass rounded-2xl hover:border-indigo-500/50 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-lg font-bold text-white">10th Class</h3>
-                            <p class="text-slate-400">The Indo-English High School</p>
-                        </div>
-                        <span class="text-xs font-bold text-indigo-400 uppercase">Completed</span>
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Terraform</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Ansible</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Azure DevOps</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Azure Kubernetes</span>
+                    </div>
+                    <button onclick="openProjectModal('proj2')" class="text-xs font-mono font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1.5">
+                        <span>Inspect Architecture</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 p-6 sm:p-8 flex flex-col justify-between transition-all group">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                            Full-Stack Observability
+                        </span>
+                        <span class="text-xs font-mono text-slate-400">Prometheus • Grafana • K8s</span>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                        Real-Time Kubernetes Cluster Telemetry with Prometheus &amp; Grafana
+                    </h3>
+                    <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                        Deployed a complete monitoring stack inside a <strong class="text-slate-200">Kubernetes Cluster</strong> using <strong class="text-slate-200">Prometheus</strong> to scrape node, pod, and container metrics via Node Exporter and cAdvisor, visualized through custom <strong class="text-slate-200">Grafana</strong> dashboards.
+                    </p>
+
+                    <div class="mt-5 space-y-2 text-xs sm:text-sm text-slate-300 bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
+                        <p><strong class="text-emerald-400">Key Impact:</strong> Proactive alerting rules for high CPU/memory saturation, pod CrashLoopBackOff, and disk pressure.</p>
+                        <p><strong class="text-cyan-400">Visibility:</strong> Single-pane-of-glass metrics tracking cluster latency, throughput, and container uptime.</p>
                     </div>
                 </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Prometheus</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Grafana</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Kubernetes</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Docker</span>
+                    </div>
+                    <button onclick="openProjectModal('proj3')" class="text-xs font-mono font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5">
+                        <span>Inspect Architecture</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 p-6 sm:p-8 flex flex-col justify-between transition-all group">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-500/15 text-purple-300 border border-purple-500/30">
+                            GitOps &amp; Multi-Pipeline CI/CD
+                        </span>
+                        <span class="text-xs font-mono text-slate-400">GitLab CI/CD • GitHub Actions</span>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                        Multi-Branch GitLab CI/CD &amp; GitHub Actions Release Workflow
+                    </h3>
+                    <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                        Designed automated <strong class="text-slate-200">GitLab CI/CD</strong> and <strong class="text-slate-200">GitHub Actions</strong> YAML pipelines featuring unit test gates, Docker image vulnerability scanning, semantic version tagging, and automated staging-to-production promotion.
+                    </p>
+
+                    <div class="mt-5 space-y-2 text-xs sm:text-sm text-slate-300 bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
+                        <p><strong class="text-purple-400">Key Impact:</strong> Standardized branching strategy with Git, enforcing quality checks before merging to main.</p>
+                        <p><strong class="text-cyan-400">Portability:</strong> Multi-architecture Docker containers tested seamlessly across AWS and local K8s clusters.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">GitLab CI/CD</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">GitHub Actions</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Git</span>
+                        <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-slate-800 text-slate-300">AWS</span>
+                    </div>
+                    <button onclick="openProjectModal('proj4')" class="text-xs font-mono font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1.5">
+                        <span>Inspect Architecture</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Interactive End-to-End CI/CD Pipeline Visualizer (Recruiter Wow Factor) -->
+    <section id="architecture" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 sm:p-10">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <span class="text-cyan-400 font-mono text-xs uppercase tracking-wider">Interactive Simulation</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Live DevOps Delivery Pipeline</h2>
+                    <p class="text-slate-400 text-sm mt-1">Click any stage or run a simulated deployment to see how my toolchain connects end-to-end.</p>
+                </div>
+                <button id="simulate-pipeline-btn" onclick="simulatePipeline()" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono font-bold text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2 self-start">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Trigger Build #104</span>
+                </button>
+            </div>
+
+            <!-- Pipeline Stages Flow -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="pipeline-stages">
+                <div class="pipeline-step p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2 transition-all" data-step="0">
+                    <div class="w-10 h-10 mx-auto rounded-lg bg-slate-800 flex items-center justify-center text-orange-400">
+                        <i class="fa-brands fa-git-alt text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white">1. Git Push</h4>
+                    <p class="text-xs text-slate-400 font-mono">Git / GitHub / GitLab</p>
+                </div>
+
+                <div class="pipeline-step p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2 transition-all" data-step="1">
+                    <div class="w-10 h-10 mx-auto rounded-lg bg-slate-800 flex items-center justify-center text-cyan-400">
+                        <i class="fa-solid fa-gears text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white">2. CI &amp; Build</h4>
+                    <p class="text-xs text-slate-400 font-mono">Jenkins / Maven / Actions</p>
+                </div>
+
+                <div class="pipeline-step p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2 transition-all" data-step="2">
+                    <div class="w-10 h-10 mx-auto rounded-lg bg-slate-800 flex items-center justify-center text-blue-400">
+                        <i class="fa-brands fa-docker text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white">3. Containerize</h4>
+                    <p class="text-xs text-slate-400 font-mono">Docker Image &amp; Scan</p>
+                </div>
+
+                <div class="pipeline-step p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2 transition-all" data-step="3">
+                    <div class="w-10 h-10 mx-auto rounded-lg bg-slate-800 flex items-center justify-center text-purple-400">
+                        <i class="fa-solid fa-server text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white">4. Cloud IaC</h4>
+                    <p class="text-xs text-slate-400 font-mono">Terraform &amp; Ansible</p>
+                </div>
+
+                <div class="pipeline-step p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2 transition-all" data-step="4">
+                    <div class="w-10 h-10 mx-auto rounded-lg bg-slate-800 flex items-center justify-center text-sky-400">
+                        <i class="fa-solid fa-dharmachakra text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white">5. K8s Rollout</h4>
+                    <p class="text-xs text-slate-400 font-mono">AWS EKS / Azure AKS</p>
+                </div>
+
+                <div class="pipeline-step p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2 transition-all" data-step="5">
+                    <div class="w-10 h-10 mx-auto rounded-lg bg-slate-800 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-heart-pulse text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white">6. Monitor</h4>
+                    <p class="text-xs text-slate-400 font-mono">Prometheus &amp; Grafana</p>
+                </div>
+            </div>
+
+            <!-- Live Status Banner -->
+            <div id="pipeline-status" class="mt-6 p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs sm:text-sm text-slate-300 flex items-center justify-between">
+                <span>Status: <strong class="text-emerald-400">IDLE — Ready for deployment simulation</strong></span>
+                <span class="text-slate-500 hidden sm:inline">AWS IAM Verified • Zero-Downtime Strategy</span>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="py-24 px-6 text-center">
-        <div class="max-w-4xl mx-auto bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-12 md:p-20 relative overflow-hidden shadow-2xl">
-            <div class="absolute inset-0 opacity-10 pointer-events-none">
-                <i class="fas fa-code absolute top-10 left-10 text-6xl"></i>
-                <i class="fas fa-server absolute bottom-10 right-10 text-6xl"></i>
-            </div>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Let's build something <br>reliable together.</h2>
-            <p class="text-blue-100 text-lg mb-10 max-w-xl mx-auto">
-                Currently looking for new opportunities and collaborations in the DevOps and Cloud space.
+    <!-- Contact / Recruiter CTA Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="rounded-2xl bg-gradient-to-r from-cyan-950/60 via-slate-900 to-blue-950/60 border border-cyan-500/30 p-8 sm:p-12 text-center space-y-6">
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                Open to DevOps &amp; Cloud Opportunities
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white max-w-2xl mx-auto">
+                Looking for a Dedicated DevOps Fresher Ready to Contribute from Day One?
+            </h2>
+            <p class="text-slate-300 max-w-xl mx-auto text-sm sm:text-base">
+                Let's connect to discuss how my hands-on skills in CI/CD, Docker, Kubernetes, AWS, Azure, Terraform, and Prometheus/Grafana can support your engineering team.
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="mailto:yourmail@example.com" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-all flex items-center justify-center gap-2">
-                    <i class="fas fa-envelope"></i> yourmail@example.com
+
+            <div class="flex flex-wrap justify-center gap-4 pt-2">
+                <button onclick="copyContact('thulugudileep@gmail.com')" class="px-6 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg shadow-cyan-500/25 transition-all">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>thulugudileep@gmail.com</span>
+                </button>
+                <button onclick="copyContact('+91 7288056396')" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white border border-slate-700 font-semibold text-sm flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-phone text-emerald-400"></i>
+                    <span>+91 7288056396</span>
+                </button>
+                <a href="https://github.com/dileep2204" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white border border-slate-700 font-semibold text-sm flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-github text-lg"></i>
+                    <span>github.com/dileep2204</span>
                 </a>
-                <a href="#" class="bg-blue-800/50 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition-all flex items-center justify-center gap-2">
-                    <i class="fab fa-linkedin"></i> LinkedIn
+                <a href="https://www.linkedin.com/in/dileepthulugu/" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white border border-slate-700 font-semibold text-sm flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-linkedin text-lg text-sky-400"></i>
+                    <span>linkedin.com/in/dileepthulugu</span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-slate-900 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <span class="text-lg font-bold text-white tracking-tighter">THULUGU DILEEP</span>
-            </div>
-            <p class="text-slate-500 text-sm">© 2024. Designed for Performance.</p>
-            <div class="flex gap-6 text-slate-500">
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-github"></i></a>
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fas fa-chevron-up"></i></a>
-            </div>
+    <footer class="border-t border-slate-800/80 py-8 px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="font-mono">© 2026 <span class="text-slate-300">Thulugu Dileep</span> • Cloud &amp; DevOps Engineer Portfolio (Fresher)</p>
+            <p class="font-mono text-slate-400">Hyderabad, Telangana • <span class="text-cyan-400">thulugudevops.cloud</span></p>
         </div>
     </footer>
 
+    <!-- Architecture Details Modal (Custom UI, No alert()) -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-5 relative">
+            <button onclick="closeProjectModal()" aria-label="Close Modal" class="absolute top-5 right-5 w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span id="modal-badge" class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                Architecture Blueprint
+            </span>
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white">Project Title</h3>
+            <div id="modal-body" class="text-sm text-slate-300 space-y-3 leading-relaxed"></div>
+            <div class="pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm">
+                    Close Blueprint
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast-box" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 border border-cyan-500/50 text-slate-100 shadow-2xl text-sm font-mono">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- Interactive Script -->
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            menuBtn.innerHTML = mobileMenu.classList.contains('hidden') 
-                ? '<i class="fas fa-bars"></i>' 
-                : '<i class="fas fa-times"></i>';
         });
 
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Interactive Skill Category Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const skillCards = document.querySelectorAll('.skill-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update button styles
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-cyan-500', 'text-slate-950');
+                    b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+                });
+                btn.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+                btn.classList.add('bg-cyan-500', 'text-slate-950');
+
+                const filter = btn.getAttribute('data-filter');
+                skillCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
             });
         });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('glass');
-                nav.classList.add('shadow-lg');
-                nav.classList.remove('py-4');
-                nav.classList.add('py-2');
-            } else {
-                nav.classList.remove('glass');
-                nav.classList.remove('shadow-lg');
-                nav.classList.add('py-4');
-                nav.classList.remove('py-2');
+        // Terminal Replay Animation
+        function replayTerminal() {
+            const term = document.getElementById('terminal-output');
+            const lines = [
+                '<div class="text-slate-500"># Re-running cluster &amp; candidate verification...</div>',
+                '<div><span class="text-emerald-400">$</span> <span class="text-white">whoami --role</span></div>',
+                '<div class="text-cyan-300 pl-3">Thulugu Dileep | Aspiring DevOps &amp; Cloud Engineer (Fresher)</div>',
+                '<div><span class="text-emerald-400">$</span> <span class="text-white">terraform validate &amp;&amp; kubectl get nodes</span></div>',
+                '<div class="text-emerald-400 pl-3">Success! The configuration is valid.</div>',
+                '<div class="text-slate-300 pl-3">aks-nodepool-01 &nbsp; Ready &nbsp; control-plane &nbsp; v1.30</div>',
+                '<div class="text-slate-300 pl-3">eks-worker-02 &nbsp;&nbsp;&nbsp; Ready &nbsp; worker &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v1.30</div>',
+                '<div><span class="text-emerald-400">$</span> <span class="text-white">curl -s localhost:9090/-/healthy</span></div>',
+                '<div class="text-emerald-400 pl-3">Prometheus &amp; Grafana Stack: Healthy (200 OK)</div>'
+            ];
+            term.innerHTML = '';
+            lines.forEach((line, idx) => {
+                setTimeout(() => {
+                    term.innerHTML += line;
+                }, idx * 180);
+            });
+        }
+
+        // Interactive CI/CD Pipeline Simulation
+        let isSimulating = false;
+        function simulatePipeline() {
+            if (isSimulating) return;
+            isSimulating = true;
+
+            const steps = document.querySelectorAll('.pipeline-step');
+            const statusBanner = document.getElementById('pipeline-status');
+            const messages = [
+                'Stage 1/6: Git commit detected on main branch — triggering webhook...',
+                'Stage 2/6: Jenkins & Maven compiling artifacts and running unit tests...',
+                'Stage 3/6: Multi-stage Docker Container built and pushed to registry...',
+                'Stage 4/6: Terraform state verified & Ansible playbooks applied...',
+                'Stage 5/6: Rolling Kubernetes Deployment updated on AKS/EKS cluster...',
+                'COMPLETE: Deployment live with zero downtime! Prometheus & Grafana healthy.'
+            ];
+
+            steps.forEach(s => {
+                s.classList.remove('border-cyan-400', 'border-emerald-400', 'bg-cyan-950/30', 'scale-[1.03]');
+            });
+
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add('border-cyan-400', 'bg-cyan-950/30', 'scale-[1.03]');
+                    statusBanner.innerHTML = `<span>Status: <strong class="text-cyan-300">${messages[index]}</strong></span>`;
+
+                    if (index === steps.length - 1) {
+                        steps.forEach(s => {
+                            s.classList.remove('border-cyan-400');
+                            s.classList.add('border-emerald-400');
+                        });
+                        statusBanner.innerHTML = `<span>Status: <strong class="text-emerald-400">${messages[index]}</strong></span>`;
+                        isSimulating = false;
+                    }
+                }, index * 650);
+            });
+        }
+
+        // Project Blueprint Modal Data
+        const projectDetails = {
+            proj1: {
+                badge: 'React + Python + PostgreSQL + Docker + Jenkins + Azure + K8s',
+                title: 'WorkforceAI – Workforce Management Platform',
+                html: `
+                    <p><strong>1. Platform Architecture:</strong> Developed a full-stack workforce management system with React frontend, Python backend APIs, and PostgreSQL relational database for employee records, shifts, attendance, and leave approvals.</p>
+                    <p><strong>2. Role-Based Access Control (RBAC):</strong> Implemented distinct authorization workflows separating administrator management privileges from employee self-service portals.</p>
+                    <p><strong>3. Containerization &amp; CI/CD Readiness:</strong> Packaged services into Docker containers, tracked versions via Git/GitHub, and designed automated build and deployment workflows targeting Jenkins, Microsoft Azure, and Kubernetes.</p>
+                `
+            },
+            proj2: {
+                badge: 'Terraform + Ansible + Azure DevOps + AKS',
+                title: 'Infrastructure as Code & Azure Kubernetes (AKS) Pipeline',
+                html: `
+                    <p><strong>1. Declarative Infrastructure:</strong> Wrote reusable Terraform modules to provision VPCs/VNets, subnets, security groups, and managed Azure Kubernetes (AKS) clusters.</p>
+                    <p><strong>2. Configuration Management:</strong> Used Ansible playbooks to automate Linux package updates, Docker daemon installation, and firewall hardening across bastion and worker nodes.</p>
+                    <p><strong>3. Cloud CI/CD:</strong> Built YAML pipelines in Azure DevOps and GitHub Actions to run <code>terraform plan</code> on pull requests and automated AKS rollouts on merge.</p>
+                `
+            },
+            proj3: {
+                badge: 'Prometheus + Grafana + Kubernetes Telemetry',
+                title: 'Real-Time Cluster Observability & Alerting Stack',
+                html: `
+                    <p><strong>1. Metrics Collection:</strong> Deployed Prometheus Server, kube-state-metrics, and Node Exporter across all worker nodes inside the Kubernetes Cluster.</p>
+                    <p><strong>2. Visualization:</strong> Built interactive Grafana dashboards tracking pod CPU/memory utilization, API server latency, network I/O, and container restart counts.</p>
+                    <p><strong>3. Incident Readiness:</strong> Configured threshold-based alerting rules to flag resource bottlenecks before end-user impact occurs.</p>
+                `
+            },
+            proj4: {
+                badge: 'GitLab CI/CD + GitHub Actions + GitOps',
+                title: 'Multi-Pipeline CI/CD & Automated Release Governance',
+                html: `
+                    <p><strong>1. Branch Protection &amp; Git Flow:</strong> Enforced feature-branch pull request checks using Git, GitLab CI/CD, and GitHub Actions.</p>
+                    <p><strong>2. Automated Quality Gates:</strong> Integrated linting, unit testing, and Docker container build verification prior to tagging release artifacts.</p>
+                    <p><strong>3. Multi-Environment Promotion:</strong> Automated deployments to staging namespaces with manual approval gates for production releases.</p>
+                `
             }
+        };
+
+        function openProjectModal(id) {
+            const data = projectDetails[id];
+            if (!data) return;
+            document.getElementById('modal-badge').textContent = data.badge;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-body').innerHTML = data.html;
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal on outside click
+        document.getElementById('project-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'project-modal') closeProjectModal();
         });
+
+        // Copy Email with Safe Fallback & Toast Notification
+        function copyContact(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('toast-box');
+            document.getElementById('toast-message').textContent = `Copied: ${text}`;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
     </script>
 </body>
 </html>
